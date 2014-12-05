@@ -1,20 +1,23 @@
----
 language: node_js
-
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - "npm config set spin false"
-  - "npm install -g npm@^2"
-
+- npm config set spin false
+- npm install -g npm@^2
 install:
-  - npm install -g bower
-  - npm install
-  - bower install
-
+- npm install -g bower
+- npm install
+- bower install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: codedeploy;
+  access_key_id:
+    secure: ZsZk8ADhpxdD7+fBi80BX/C3tD280BiwdOHHmE93I8rcDw5chglv2tWHizO55PIrAPl/Pu38M+m2JO2vmLKqUYuEONaFAE2UmWpI+yARPAG63ACt/lRsc0OZBBTWAuksnefNWLC4slaZ/sztsVNR+XKV5MTeR4yiGlvnHuRAvGY=
+  secret_access_key:
+    secure: Wf0kAxJ3FnRM4CjBQ7exq5YdEA37QWxQ3PvteXMw/mu5oMsAj3L0YEVx0r4acQYJr12o1RfnF3qsNQuwqIpCiXrVxA+Qm6B11pr6J5I8SUMRPa1MEZDs4VUq0iV3RNQCT0SVBr22Q4egJk8FAxPOXdk5zChfAfcRBvfDmj66fLA=
+  key: latest/javakat.zip
+  application: javakat
+  deployment_group: Production
