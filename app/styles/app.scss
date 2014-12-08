@@ -1,5 +1,6 @@
 $cmd: #333;
 $cmd-font-family: Inconsolata, Consolas, Monaco, Courier, serif;
+$cmd-blue: #68a;
 
 body {
   background: white;
@@ -117,6 +118,9 @@ main {
       p {
         font-size: 1rem; 
         margin: 0.25rem 0;
+      }
+      a {
+        color: $cmd-blue
       }
     }
   }
