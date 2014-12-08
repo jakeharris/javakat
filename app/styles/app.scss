@@ -1,4 +1,5 @@
-$cmd: #775;
+$cmd: #333;
+$cmd-font-family: Inconsolata, Consolas, Monaco, Courier, serif;
 
 body {
   background: white;
@@ -96,6 +97,7 @@ main {
   // Output section. Content.
   section.output {
     background: $cmd;
+    font-family: $cmd-font-family;
     color: white;
     
     width: 100%;
@@ -105,12 +107,17 @@ main {
     margin-top: 10rem;
     
     .content {
-      width: 50%;
+      width: 40%;
       margin-left: auto;
       margin-right: auto;
       display: block;
       
       padding: 2rem;
+      
+      p {
+        font-size: 1rem; 
+        margin: 0.25rem 0;
+      }
     }
   }
 }
