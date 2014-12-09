@@ -1,1 +1,1 @@
-web: /usr/bin/npm run start
+web: vendor/node/bin/npm run start
