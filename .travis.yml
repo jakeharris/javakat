@@ -13,11 +13,9 @@ install:
 script:
 - npm test
 deploy:
-  provider: codedeploy;
-  access_key_id:
-    secure: ZsZk8ADhpxdD7+fBi80BX/C3tD280BiwdOHHmE93I8rcDw5chglv2tWHizO55PIrAPl/Pu38M+m2JO2vmLKqUYuEONaFAE2UmWpI+yARPAG63ACt/lRsc0OZBBTWAuksnefNWLC4slaZ/sztsVNR+XKV5MTeR4yiGlvnHuRAvGY=
-  secret_access_key:
-    secure: Wf0kAxJ3FnRM4CjBQ7exq5YdEA37QWxQ3PvteXMw/mu5oMsAj3L0YEVx0r4acQYJr12o1RfnF3qsNQuwqIpCiXrVxA+Qm6B11pr6J5I8SUMRPa1MEZDs4VUq0iV3RNQCT0SVBr22Q4egJk8FAxPOXdk5zChfAfcRBvfDmj66fLA=
-  key: latest/javakat.zip
-  application: javakat
-  deployment_group: Production
+  provider: heroku
+  api_key:
+    secure: Z+f8oDC3aaYyUeH2fm4KS0yLKzT46hgoEl71xsv03w1dNQ0NtpTiP3A75qxBd5+gmvNwzt/5lNYzhJH1DtRt+qtzzEhSMx5NG8Ro2bVrY7TRwktAoPNHrUGaXunMNbgvL0b4rF/0OywBVYatm0iGb6NXl+nrnKXo4P/aKM7Hdy8=
+  app: javakat
+  on:
+    repo: javakat/javakat
