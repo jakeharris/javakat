@@ -1,0 +1,127 @@
+$cmd: #333;
+$cmd-font-family: Inconsolata, Consolas, Monaco, Courier, serif;
+$cmd-blue: #68a;
+
+body {
+  background: white;
+  margin: 0;
+}
+
+main {
+  
+  // Input section. Logo and command prompt.
+  section.input {
+    
+    width: 50%;
+    margin: 0 25%;
+    margin-top: 10rem; 
+    
+    img {
+      margin-left: auto;
+      margin-right: auto;
+      display:block;
+
+      height: 10rem;
+    }
+
+    .cmd {
+      margin-top: 5rem;
+      display: block;
+
+      position: relative;
+
+
+      .cmd-frill {
+        border: 3px solid $cmd;
+        height: 1rem;
+        width: 1rem;
+        border-radius: 0 1rem 0 0;
+
+        position: absolute;
+        left: 21.5%;
+        bottom: 0rem;
+      }
+
+      .cmd-antifrill {
+        z-index: 2;
+        height: 1rem;
+        width: 1rem;
+        border: 3px solid white;
+        background: white;
+        
+        position: absolute;
+        bottom: -3px;
+
+      }
+
+      .cmd-frill:first-of-type + .cmd-antifrill {
+        border-radius: 0 1rem 0 0;
+        left: 21.06%;
+      }
+      
+      input[type=text] {
+        display: block;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        padding: 0 0.5rem;
+
+        border: none;
+        border-bottom: 3px solid $cmd;
+        width: 50%;
+        height: 2rem;
+
+        color: $cmd;
+        font-size: 1.2rem;
+
+        &:focus {
+          outline: none; 
+        }
+      }
+
+      input[type=text] + .cmd-frill {
+        border-radius: 1rem 0 0 0;
+
+        bottom: 0rem;
+        left: 76%;
+      }
+
+      input[type=text] + .cmd-frill + .cmd-antifrill {
+        border-radius: 1rem 0 0 0;
+        left: 76.4%;
+      }
+    }
+
+  }
+  
+  // Output section. Content.
+  section.output {
+    background: $cmd;
+    font-family: $cmd-font-family;
+    color: white;
+    
+    width: 100%;
+    min-height: 30rem;
+    
+    margin: 0;
+    margin-top: 10rem;
+    
+    .content {
+      width: 40%;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      
+      padding: 2rem;
+      
+      p {
+        font-size: 1rem; 
+        margin: 0.25rem 0;
+      }
+      a {
+        color: $cmd-blue
+      }
+    }
+  }
+}
