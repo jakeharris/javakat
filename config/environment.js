@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'app',
+    modulePrefix: 'javakat',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
