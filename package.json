@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "ember serve --environment=production --port=${PORT}",
+    "start": "ember serve --environment=production --port=8081",
     "build": "ember build",
     "test": "ember test"
   },
