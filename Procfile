@@ -1,1 +1,1 @@
-web: ember serve --environment="production"
+web: npm run start
