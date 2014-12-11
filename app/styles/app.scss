@@ -16,6 +16,12 @@ main {
     margin: 0 25%;
     margin-top: 10rem; 
     
+    &.fixed {
+      position: fixed;
+      max-height: 0rem;
+      margin-top: 0;
+    }
+    
     img {
       margin-left: auto;
       margin-right: auto;
@@ -107,7 +113,7 @@ main {
     margin: 0;
     margin-top: 10rem;
     
-    .content {
+    #content {
       width: 40%;
       margin-left: auto;
       margin-right: auto;
