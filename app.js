@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var sass = require('sass');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -25,7 +26,7 @@ app.use(sass.middleware({
   dest: __dirname + '/assets/styles',
   debug: true,
   outputStyle: 'compressed'
-});
+}));
 app.use(express.static(path.join(__dirname, 'assets')));
 
 app.use('/', routes);
