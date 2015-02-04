@@ -4,8 +4,8 @@
 /dist
 /tmp
 *.html
-*.css
-*.css*
+assets/styles/*.css
+assets/styles/*.css*
 
 # dependencies
 /node_modules
