@@ -5,6 +5,7 @@
 /tmp
 *.html
 *.css
+*.css*
 
 # dependencies
 /node_modules
