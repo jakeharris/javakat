@@ -1,0 +1,23 @@
+{
+  "name": "javakat",
+  "version": "0.0.0",
+  "homepage": "https://github.com/javakat/javakat",
+  "authors": [
+    "Jake Harris <milieu@javakat.io>"
+  ],
+  "description": "The javakat design site.",
+  "main": "app.js",
+  "keywords": [
+    "personal",
+    "site"
+  ],
+  "license": "Apache",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
