@@ -56,9 +56,6 @@ module.exports = function(grunt) {
     },
 
     sass: {
-      options: {
-        loadPath: 'bower_components'
-      },
       dist: {
         files: [{
           expand: true,
