@@ -28,7 +28,7 @@ app.use(sass({
   debug: true,
   outputStyle: 'compressed'
 }));
-app.use(express.static(path.join(__dirname, '/assets')));
+app.use(express.static(path.join(__dirname, 'assets')));
 
 app.use('/', routes);
 app.use('/users', users);
