@@ -109,6 +109,10 @@ module.exports = function(grunt) {
     'jshint',
     'assemble'
   ]);
+  grunt.registerTask('heroku:production', [
+    'sass',
+    'assemble'
+  ]);
 
 
 }
