@@ -22,7 +22,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(sass.middleware ({
+app.use(sass ({
   src:  __dirname + '/assets/sass',
   dest: __dirname + '/assets',
   debug: true
