@@ -6,4 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
+router.get('/milieu', function(req, res, next) {
+  res.render('milieu');
+});
+
 module.exports = router;
