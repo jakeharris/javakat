@@ -22,6 +22,11 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(sass.middleware ({
+  src:  __dirname + '/assets/sass',
+  dest: __dirname + '/assets',
+  debug: true
+}));
 app.use(express.static(path.join(__dirname, 'assets')));
 
 app.use('/', routes);
