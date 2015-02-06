@@ -20,7 +20,7 @@ module.exports = function(grunt) {
         files: ['Gruntfile.js']
       },
       sass: {
-        files: ['<%= config.assets %>/styles/sass/{,*/}*.scss'],
+        files: ['<%= config.assets %>/sass/styles/{,*/}*.scss'],
         tasks: ['sass']
       },
       js: {
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: '<%= config.assets %>/styles',
+          cwd: '<%= config.assets %>/sass/styles',
           src: ['*.scss'],
           dest: '<%= config.assets %>/styles/',
           ext: '.css'
