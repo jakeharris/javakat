@@ -12,14 +12,58 @@
          url('../fonts/donau_neue_uppercase-webfont.svg#donau_uppercaseneue') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
 $header-font-family: "donau-neue-uppercase", "Lucida Grande", Helvetica, Arial, sans-serif;
 $copy-font-family: "museo-slab", Georgia, Palatino, serif;
 
+$charcoal: #333;
+$orange: #faa942;
+
+$hex-width: 10vw;
+$hex-height: ($hex-width * (120/104));
+
+$logo-height: $hex-height * 0.85;
+$logo-hex-height: $hex-height;
+$logo-hex-width: ($logo-hex-height * 104/120);
+
+@mixin hex ($color, $width, $height) {
+  /* A good standard is 104w x 120h. */
+  background-color: $color;
+
+  position: relative;
+  width: $width;
+  height: ($height / 2);
+
+  float: left;
+
+  margin-bottom: ($height / 3);
+  margin-left: ($width / 10);
+
+  &:before {
+    content: "";
+    width: 0; height: 0;
+    border-bottom: ($height / 4) solid $color;
+    border-left: ($width / 2) solid transparent;
+    border-right: ($width / 2) solid transparent;
+
+    position: absolute;
+    top: (-1 * $height / 4);
+  }
+  &:after {
+    content: "";
+    width: 0; height: 0;
+    border-top: ($height / 4) solid $color;
+    border-left: ($width / 2) solid transparent;
+    border-right: ($width / 2) solid transparent;
+
+    position: absolute;
+    bottom: (-1 * $height / 4);
+  }
+}
+
 body {
-  padding: 0;
+  padding: 0; margin: 0;
   font-size: 14px;
   font-family: $copy-font-family;
 }
@@ -34,13 +78,18 @@ a {
 }
 
 section {
-  width: 100%;
+  width: 38rem;
+  margin: 0 auto;
+
   h1 {
     font-size: 3rem;
+    margin-top: $logo-height + 2;
     text-align: center;
   }
   .logo {
-    height: 10rem;
+    height: $logo-height;
+    position: absolute;
+    top: -15px;
   }
 }
 
@@ -50,4 +99,30 @@ section {
 }
 .text-center {
   text-align: center;
+}
+
+.hexes {
+  display: block;
+  clear: both;
+
+  width: 100%;
+
+  padding-left: $hex-width / 2 + 1;
+}
+
+.hex-row {
+  clear: left;
+}
+.hex-row--even {
+  margin-left: -(($hex-width / 2) + 0.5);
+}
+
+.hex {
+  @include hex($charcoal, $hex-width, $hex-height);
+}
+.hex-orange {
+  @include hex($orange, $hex-width, $hex-height);
+}
+.hex-clear {
+  @include hex(transparent, $logo-hex-width, $logo-height);
 }
