@@ -16,17 +16,39 @@
 
 $header-font-family: "donau-neue-uppercase", "Lucida Grande", Helvetica, Arial, sans-serif;
 $copy-font-family: "museo-slab", Georgia, Palatino, serif;
+$copy-font-size: 18px;
 
-$charcoal: #333;
-$orange: #faa942;
+$warm-white: hsl(34, 100%, 98%);
+$charcoal: hsl(0, 0, 20%);
+$orange: hsl(34, 95%, 62%);
 
-$hex-width: 10vw;
+$hex-width: 80px;
 $hex-height: ($hex-width * (120/104));
 
 $logo-height: $hex-height * 0.85;
 $logo-hex-height: $hex-height;
 $logo-hex-width: ($logo-hex-height * 104/120);
 
+$content-width: 38rem; // effectively the content police. CALL THE COPS
+$section-height: 20rem;
+
+$tenet-width: 10rem;
+
+
+@mixin determineTextColor($backgroundColor) {
+  @if $backgroundColor == $warm-white {
+    color: $charcoal;
+  }
+  @else if $backgroundColor == $charcoal {
+    color: $warm-white;
+  }
+  @else if $backgroundColor == $orange {
+    color: $warm-white;
+  }
+  @else {
+    color: $charcoal;
+  }
+}
 @mixin hex ($color, $width, $height) {
   /* A good standard is 104w x 120h. */
   background-color: $color;
@@ -39,6 +61,11 @@ $logo-hex-width: ($logo-hex-height * 104/120);
 
   margin-bottom: ($height / 3);
   margin-left: ($width / 10);
+
+  line-height: 1.1rem;
+  font-size: 1.1rem;
+  @include determineTextColor($color);
+  word-wrap: break-word;
 
   &:before {
     content: "";
@@ -61,11 +88,22 @@ $logo-hex-width: ($logo-hex-height * 104/120);
     bottom: (-1 * $height / 4);
   }
 }
+@mixin hex-by-width ($color, $width) {
+  @include hex($color, $width, ($width * 120 / 104));
+}
+@mixin circle ($radius) {
+  border-radius: ($radius / 2) ($radius / 2);
+  width: $radius;
+  height: $radius;
+}
 
 body {
+  background: $warm-white;
   padding: 0; margin: 0;
-  font-size: 14px;
+  font-size: $copy-font-size;
   font-family: $copy-font-family;
+  line-height: $copy-font-size * 1.618;
+  color: $charcoal;
 }
 
 h1, h2, h3,
@@ -74,23 +112,47 @@ h4, h5, h6 {
 }
 
 a {
-  color: #00B7FF;
+  outline: none;
+  text-decoration: none;
+
+  color: $orange;
 }
 
 section {
-  width: 38rem;
+  min-height: $section-height;
   margin: 0 auto;
+  padding-top: 3rem;
+  &:first-of-type {
+    padding-top: 0;
 
+    h1 {
+      margin-top: $logo-height * 1.5;
+    }
+  }
   h1 {
     font-size: 3rem;
-    margin-top: $logo-height + 2;
     text-align: center;
   }
   .logo {
     height: $logo-height;
     position: absolute;
-    top: -15px;
+    top: -12px;
   }
+  .container {
+    width: $content-width;
+    margin: 0 auto;
+    padding: 3rem;
+    padding-top: 0;
+  }
+}
+
+.dark {
+  background: $charcoal;
+  color: $warm-white;
+}
+.orange {
+  background: $orange;
+  color: $warm-white;
 }
 
 .media-center {
@@ -103,19 +165,36 @@ section {
 
 .hexes {
   display: block;
-  clear: both;
 
-  width: 100%;
+  margin: 0 auto;
+  width: $content-width;
 
-  padding-left: $hex-width / 2 + 1;
+  padding-left: 3 * $hex-width / 2;
 }
 
 .hex-row {
   clear: left;
 }
 .hex-row--even {
-  margin-left: -(($hex-width / 2) + 0.5);
+  margin-left: -(($hex-width / 2) + 4);
 }
+// .hex {
+//   display: inline-block;
+// }
+// .hex:before {
+//   content: '\2b22';
+//   font-family: Arial, serif;
+//   font-size: 10rem;
+//   padding: 0; margin: 0;
+// }
+// .hex-orange:before {
+//   @extend .hex;
+//   color: $orange;
+// }
+// .hex-clear:before {
+//   @extend .hex;
+//   color: transparent;
+// }
 
 .hex {
   @include hex($charcoal, $hex-width, $hex-height);
@@ -125,4 +204,32 @@ section {
 }
 .hex-clear {
   @include hex(transparent, $logo-hex-width, $logo-height);
+}
+.hex-white {
+  @include hex($warm-white, $hex-width, $hex-height);
+}
+
+.circle {
+  @include circle($tenet-width);
+  background: $warm-white;
+}
+
+.tenets {
+  width: 100%;
+  display: -webkit-flex;
+  display:     -ms-flexbox;
+  display:         flex;
+  justify-content: space-around;
+}
+.tenet {
+  width: 33%;
+  flex-basis: 33%;
+}
+.tenet-hex {
+  @include hex-by-width($warm-white, $tenet-width);
+  float: none;
+  position: relative;
+  top: ($tenet-width * 120/104) / 8; //tenet-height / 4
+  margin: 0 auto;
+  margin-bottom: ($tenet-width * 120/104) / 2;
 }
