@@ -1,8 +1,12 @@
+var path = require('path');
+
 module.exports = function(grunt) {
   'use strict';
 
   require('time-grunt')(grunt);
-  require('jit-grunt')(grunt);
+  require('jit-grunt')(grunt, {
+    express: 'grunt-express-server'
+  });
 
   // Project configuration.
   grunt.initConfig({
@@ -33,25 +37,13 @@ module.exports = function(grunt) {
       },
       livereload: {
         options: {
-          livereload: '<%= connect.options.livereload %>'
+          livereload: '<%= express.options.livereload %>'
         },
         files: [
           '<%= config.dist %>/{,*/}views/*.hbs',
           '<%= config.assets %>/styles/{,*/}*.css',
           '<%= config.assets %>/scripts/{,*/}*.js'
         ]
-      }
-    },
-
-    connect: {
-      options: {
-        port: 1107,
-        open: true,
-        livereload: 35729,
-        hostname: 'localhost'
-      },
-      livereload: {
-
       }
     },
 
@@ -92,7 +84,10 @@ module.exports = function(grunt) {
     express: {
       options: {
         livereload: true,
-        bases: '.'
+        port: 1107
+      },
+      server: {
+        script: 'bin/www'
       }
     }
 
@@ -101,7 +96,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['auto']);
   grunt.registerTask('auto', [
     'build',
-    'connect:livereload',
     'watch'
     ]);
   grunt.registerTask('build', [
