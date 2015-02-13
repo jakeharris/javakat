@@ -16,6 +16,7 @@ module.exports = function(grunt) {
       assets: 'assets',
       views: 'views',
       master: 'views/layouts/default.hbs',
+      layouts: 'views/layouts',
       dist: '.'
     },
 
@@ -75,8 +76,15 @@ module.exports = function(grunt) {
           data: '<%= config.assets %>/data/*.{json,yml}',
           partials: '<%= config.partials %>'
         },
-        files: {
-          './': ['<%= config.views %>/*.hbs']
+        home: {
+          './': ['<%= config.views %>/index.hbs']
+        },
+        milieu: {
+          options: {
+            flatten: true,
+            layout: '<%= config.layouts %>/milieu.hbs'
+          },
+          './milieu.html': ['<%= config.views %>/milieu.hbs']
         }
       }
     },
@@ -84,18 +92,19 @@ module.exports = function(grunt) {
     express: {
       options: {
         livereload: true,
-        port: 1107
+        port: 1107,
+        script: 'bin/www'
       },
       server: {
-        script: 'bin/www'
+
       }
     }
 
   });
 
-  grunt.registerTask('default', ['auto']);
-  grunt.registerTask('auto', [
+  grunt.registerTask('default', [
     'build',
+    'express',
     'watch'
     ]);
   grunt.registerTask('build', [
