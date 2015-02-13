@@ -1,0 +1,62 @@
+
+@mixin determineTextColor($backgroundColor) {
+  @if $backgroundColor == $warm-white {
+    color: $charcoal;
+  }
+  @else if $backgroundColor == $charcoal {
+    color: $warm-white;
+  }
+  @else if $backgroundColor == $orange {
+    color: $warm-white;
+  }
+  @else {
+    color: $charcoal;
+  }
+}
+@mixin hex ($color, $width, $height) {
+  /* A good standard is 104w x 120h. */
+  background-color: $color;
+
+  position: relative;
+  width: $width;
+  height: ($height / 2);
+
+  float: left;
+
+  margin-bottom: ($height / 3);
+  margin-left: ($width / 10);
+
+  line-height: 1.1rem;
+  font-size: 1.1rem;
+  @include determineTextColor($color);
+  word-wrap: break-word;
+
+  &:before {
+    content: "";
+    width: 0; height: 0;
+    border-bottom: ($height / 4) solid $color;
+    border-left: ($width / 2) solid transparent;
+    border-right: ($width / 2) solid transparent;
+
+    position: absolute;
+    top: (-1 * $height / 4);
+  }
+  &:after {
+    content: "";
+    width: 0; height: 0;
+    border-top: ($height / 4) solid $color;
+    border-left: ($width / 2) solid transparent;
+    border-right: ($width / 2) solid transparent;
+
+    position: absolute;
+    bottom: (-1 * $height / 4);
+  }
+}
+@mixin hex-by-width ($color, $width) {
+  @include hex($color, $width, ($width * 120 / 104));
+}
+@mixin circle ($radius) {
+  border-radius: ($radius / 2) ($radius / 2);
+  width: $radius;
+  height: $radius;
+}

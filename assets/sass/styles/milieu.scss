@@ -1,0 +1,18 @@
+@import 'fonts';
+@import 'variables';
+@import 'mixins';
+
+$offwhite: #fefeff;
+$blue: #8989fb;
+
+.section {
+  min-height: 80vw;
+}
+
+.classes {
+  background: $blue;
+}
+
+.class {
+  @include hex($offwhite, $hex-width, $hex-height);
+}

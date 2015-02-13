@@ -1,0 +1,19 @@
+$header-font-family: "donau-neue-uppercase", "Lucida Grande", Helvetica, Arial, sans-serif;
+$copy-font-family: "museo-slab", Georgia, Palatino, serif;
+$copy-font-size: 18px;
+
+$warm-white: hsl(34, 100%, 98%);
+$charcoal: hsl(0, 0, 20%);
+$orange: hsl(34, 95%, 62%);
+
+$hex-width: 80px;
+$hex-height: ($hex-width * (120/104));
+
+$logo-height: $hex-height * 0.85;
+$logo-hex-height: $hex-height;
+$logo-hex-width: ($logo-hex-height * 104/120);
+
+$content-width: 38rem; // effectively the content police. CALL THE COPS
+$section-height: 20rem;
+
+$tenet-width: 10rem;
